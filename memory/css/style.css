@@ -1,0 +1,30 @@
+/* MEMORY GAME BOARD */
+
+div {
+    background: #CCC;
+    border: #999 1px solid;
+    width: 756px;
+    height: 510px;
+    padding: 24px;
+    margin: 0 auto;
+}
+
+/* MEMORY CARDS BACKGROUND */
+
+div div {
+    background: url(../images/background.png) no-repeat;
+    border: #000 1px solid;
+    width: 64px;
+    height: 64px;
+    float: left;
+    margin: 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+/* MEMORY CARDS FOREGROUND (VALUES) */
+
+div div p {
+    font-size: 20px;
+    text-align: center;
+}
