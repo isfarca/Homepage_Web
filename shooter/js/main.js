@@ -1,21 +1,29 @@
+// Instantiate.
 let canvas;
-let	ctx;
+let	canvasRenderingContext;
 let	width;
 let	height;
 
+// Initialize.
 function init()
 {
+	// Get canvas.
 	canvas = document.getElementById("canvas");
+
+	// Set canvas size.
 	width = canvas.width;
 	height = canvas.height;
-	ctx = canvas.getContext('2d');
-	
+
+	// Set dimension.
+	canvasRenderingContext = canvas.getContext('2d');
+
+	// Initialize keys.
 	window.onkeydown = keyLogger.keyDownListener;
 	window.onkeyup = keyLogger.keyUpListener;
 	
-	// Init player.
-	player.x = width/2;
-	player.y = height/2;
+	// Initialize player.
+	player.x = width / 2;
+	player.y = height / 2;
 	
 	// Main game loop.
 	setInterval(function()
@@ -25,23 +33,32 @@ function init()
 	},10);
 }
 
-function updateGame(dt)
+// Update game play / conditions / game logic per frame.
+function updateGame(delta)
 {
-	bullets.update(dt);
-	targets.update(dt);
-	player.update(dt);
+	bullets.update(delta);
+	targets.update(delta);
+	player.update(delta);
 }
 
+// Output game per frame.
 function renderGame()
 {
+	// Background.
 	renderBackground();
-	player.render(ctx);
-	bullets.render(ctx);
-	targets.render(ctx);
+
+	// Game content.
+	player.render(canvasRenderingContext);
+	bullets.render(canvasRenderingContext);
+	targets.render(canvasRenderingContext);
 }
 
+// Output background.
 function renderBackground()
 {
-	ctx.fillStyle = "#c6c6c6";
-	ctx.fillRect(0,0,width,height);
+	// White level.
+	canvasRenderingContext.fillStyle = "#c6c6c6";
+
+	// Set game screen.
+	canvasRenderingContext.fillRect(0, 0, width, height);
 }

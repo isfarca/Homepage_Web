@@ -1,18 +1,25 @@
+// Instantiate bullets.
 let bullets = new Bullets();
 
+// 'Bullets' class.
 function Bullets()
 {
+	// Default values.
 	this.objects = [];
 	this.maxID = 0;
-	
+
+	// Initialize.
 	this.init = function(bullet)
 	{
+		// Velocity of bullets.
 		bullet.vx = bullet.v * Math.cos(bullet.angle);
 		bullet.vy = bullet.v * Math.sin(bullet.angle);
 	};
 
+	// Set bullets.
 	this.push = function(bullet)
 	{
+		// First of all, initialize bullet.
 		this.init(bullet);
 
 		// Search empty space.
@@ -30,77 +37,96 @@ function Bullets()
 		}
 		this.objects[id] = bullet;
 
+		// Set the amount of bullets by id.
 		if (id > this.maxID)
 		{
 			this.maxID = id;
 		}
 	};
-	
-	this.update = function(dt)
+
+	// Calling per frame.
+	this.update = function(delta)
 	{
+		// Go through all bullets.
 		for (let i = 0; i <= this.maxID; i++)
 		{
+			// If the bullet is no available, then continue the search.
 			if (this.objects[i] === undefined)
 			{
 				continue;
 			}
-			
-			let obj = this.objects[i];
-			
-			obj.x += obj.vx * dt;
-			obj.y += obj.vy * dt;
+
+			// Refresh the positions of bullets.
+			let object = this.objects[i];
+			object.x += object.vx * delta;
+			object.y += object.vy * delta;
 
 			// Detect if on screen.
-			if (obj.x < 0 || obj.y < 0 || obj.x > width || obj.y > height || obj.remove)
+			if (object.x < 0 || object.y < 0 || object.x > width || object.y > height || object.remove)
 			{
+				// Delete current bullet.
 				delete this.objects[i];
 			}
 		}
 	};
-	
-	this.render = function(ctx)
+
+	// Render playable field.
+	this.render = function(canvasRenderingContext)
 	{
-		ctx.fillStyle = "#000000";
+		// White background.
+		canvasRenderingContext.fillStyle = "#000000";
 
-		for(let i = 0;i < this.maxID;i++)
+		// Go through all bullets.
+		for (let i = 0; i < this.maxID; i++)
 		{
-			if(this.objects[i] === undefined)
-			{
-				continue;
-			}
-			
-			let obj = this.objects[i];
-
-			ctx.beginPath();
-			ctx.arc(obj.x,obj.y,2,0,6.28);
-			ctx.fill();
-		}
-	};
-
-	this.getMinInfo = function(o)
-	{
-		let dist = 99999;
-		let obj;
-
-		for (let i = 0; i <= this.maxID; i++)
-		{
+			// If the bullet is no available, then continue the search.
 			if (this.objects[i] === undefined)
 			{
 				continue;
 			}
 
-			let d = Math.sqrt
+			// Render / Fill the bullet.
+			let object = this.objects[i];
+			canvasRenderingContext.beginPath();
+			canvasRenderingContext.arc(object.x, object.y, 2, 0, 6.28);
+			canvasRenderingContext.fill();
+		}
+	};
+
+	// Get the minimum distance of between target and bullet.
+	this.getMinimumDistanceInfo = function(targetObject)
+	{
+		// Set the maximum distance.
+		let distance = 99999;
+
+		// Current bullet object.
+		let object;
+
+		// Go through all bullets.
+		for (let i = 0; i <= this.maxID; i++)
+		{
+			// If the bullet is no available, then continue the search.
+			if (this.objects[i] === undefined)
+			{
+				continue;
+			}
+
+			// Get the current distance of between target and bullet.
+			let currentDistance = Math.sqrt
 			(
-				(o.x - this.objects[i].x)*(o.x - this.objects[i].x) +
-				(o.y - this.objects[i].y)*(o.y - this.objects[i].y)
+				(targetObject.x - this.objects[i].x)*(targetObject.x - this.objects[i].x) +
+				(targetObject.y - this.objects[i].y)*(targetObject.y - this.objects[i].y)
 			);
 
-			if (d < dist)
+			// Check is the distance correctly.
+			if (currentDistance < distance)
 			{
-				dist = d;
-				obj = this.objects[i];
+				distance = currentDistance;
+				object = this.objects[i];
 			}
 		}
-		return {dist:dist,object:obj};
+
+		// Return multiple values.
+		return {distance:distance, object:object};
 	};
 }

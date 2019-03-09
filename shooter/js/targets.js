@@ -1,24 +1,38 @@
+// Instantiate.
 let targets = new Targets();
 
+// 'Targets' class.
 function Targets()
 {
+	// Default values.
 	this.objects = [];
 	this.maxID = 0;
-	
+
+	// Initialize.
 	this.init = function(target)
 	{
+		// Velocity.
 		target.vx = target.v * Math.cos(target.angle);
 		target.vy = target.v * Math.sin(target.angle);
+
+		// Animation time by hit.
 		target.hitAnimClock = -1;
+
+		// Scale.
 		target.scale = 1;
-		target.alpfa = 0;
-		target.nextAlpfa = 1;
+
+		// Alpha.
+		target.alpha = 0;
+		target.nextAlpha = 1;
 	};
-	
+
+	// Set targets.
 	this.push = function(target)
 	{
+		// Initialize target.
 		this.init(target);
 
+		// Search empty space.
 		let i = 0;
 		for (;;)
 		{
@@ -33,66 +47,70 @@ function Targets()
 		}
 		this.objects[i] = target;
 
+		// Set the amount of targets by id.
 		if (this.maxID < i)
 		{
 			this.maxID = i;
 		}
 	};
 
-	this.getSize = function()
+	// Get the number of targets.
+	this.getAmount = function()
 	{
-		let size = 0;
-
+		let number = 0;
 		for (let i = 0; i < this.maxID; i++)
 		{
 			if (this.objects[i] === undefined)
 			{
 				continue;
 			}
-			size++;
+			number++;
 		}
-		return size;
+
+		return number;
 	};
-	
-	this.update = function(dt)
+
+	// Calling per frame.
+	this.update = function(delta)
 	{
+		// Go through all the targets.
 		for (let i = 0; i < this.maxID; i++)
 		{
+			// If the targets is no available, then continue the search.
 			if (this.objects[i] === undefined)
 			{
 				continue;
 			}
 
-			let obj = this.objects[i];
-			
-			obj.x += obj.vx * dt;
-			obj.y += obj.vy * dt;
-			
-			if (obj.alpfa !== obj.nextAlpfa)
+			// Set velocity.
+			let object = this.objects[i];
+			object.x += object.vx * delta;
+			object.y += object.vy * delta;
+
+			// Animation by hitting.
+			if (object.alpha !== object.nextAlpha)
 			{
-				obj.alpfa += (obj.nextAlpfa - obj.alpfa)/10
+				object.alpha += (object.nextAlpha - object.alpha) / 10;
 			}
-			
-			if (obj.alpfa > 0.1)
+			if (object.alpha > 0.1)
 			{
-				let info = bullets.getMinInfo(obj);
+				let info = bullets.getMinimumDistanceInfo(object);
 				
-				if(info.dist <= obj.size * obj.scale)
+				if(info.distance <= object.size * object.scale)
 				{
 					info.object.remove = true;
 
-					if(obj.hitAnimClock === -1)
+					if(object.hitAnimClock === -1)
 					{
-						obj.hitAnimClock = 0;
+						object.hitAnimClock = 0;
 					}
 				}
 			}
-
-			if (obj.hitAnimClock !== -1)
+			if (object.hitAnimClock !== -1)
 			{
-				obj.hitAnimClock += dt;
+				object.hitAnimClock += delta;
 
-				if (obj.hitAnimClock >= 1)
+				if (object.hitAnimClock >= 1)
 				{
 					delete this.objects[i];
 
@@ -101,20 +119,22 @@ function Targets()
 			}
 			
 			// Detect if on screen.
-			if (obj.x < 0 || obj.y < 0 || obj.x > width || obj.y > height)
+			if (object.x < 0 || object.y < 0 || object.x > width || object.y > height)
 			{
 				delete this.objects[i];
 			}
 		}
-		
-		if (this.getSize() < 5)
+
+		// Is the amount of targets under five.
+		if (this.getAmount() < 5) // Yes.
 		{
+			// Spawn new target.
 			this.push
 			({
-				x:Math.random()*width,
-				y:Math.random()*height,
+				x:Math.random()* width,
+				y:Math.random()* height,
 				v:5,
-				angle:Math.random()*2*Math.PI,
+				angle:Math.random()* 2 * Math.PI,
 				size:25,
 				color:
 				{
@@ -126,43 +146,51 @@ function Targets()
 		}
 	};
 
-	this.render = function(ctx)
+	// Output.
+	this.render = function(canvasRenderingContext)
 	{
+		// Go through all the targets.
 		for (let i = 0; i < this.maxID; i++)
 		{
+			// If the targets is no available, then continue the search.
 			if (this.objects[i] === undefined)
 			{
 				continue;
 			}
-			
-			let obj = this.objects[i];
-			obj.scale = 1;
 
-			if (obj.hitAnimClock !== -1)
+			// Set current object.
+			let object = this.objects[i];
+
+			// Set default scale of current object.
+			object.scale = 1;
+
+			// Animation.
+			if (object.hitAnimClock !== -1)
 			{
-				obj.alpfa = 1 - obj.hitAnimClock*1.5;
+				object.alpha = 1 - object.hitAnimClock*1.5;
 
-				if (obj.alpfa < 0)
+				if (object.alpha < 0)
 				{
-					obj.alpfa = 0;
+					object.alpha = 0;
 				}
 
-				obj.scale = 1 + 2 * obj.hitAnimClock;
-				obj.nextAlpfa = obj.alpfa;
+				object.scale = 1 + 2 * object.hitAnimClock;
+				object.nextAlpha = object.alpha;
 			}
 
-			ctx.fillStyle = utils.getARGBString
+			// Draw target.
+			canvasRenderingContext.fillStyle = utilities.getARGBString
 			(
-				obj.alpfa,
-				obj.color.r,
-				obj.color.g,
-				obj.color.b
+				object.alpha,
+				object.color.r,
+				object.color.g,
+				object.color.b
 			);
-			ctx.globalAlpha=obj.alpfa;
-			ctx.beginPath();
-			ctx.arc(obj.x,obj.y,obj.size * obj.scale,0,6.28);
-			ctx.fill();
-			ctx.globalAlpha=1;
+			canvasRenderingContext.globalAlpha = object.alpha;
+			canvasRenderingContext.beginPath();
+			canvasRenderingContext.arc(object.x, object.y, object.size * object.scale, 0, 6.28);
+			canvasRenderingContext.fill();
+			canvasRenderingContext.globalAlpha = 1;
 		}
 	};
 }
