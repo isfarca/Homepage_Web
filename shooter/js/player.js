@@ -84,11 +84,13 @@ function Player()
 	// Output.
 	this.render = function(canvasRenderingContext)
 	{
-		canvasRenderingContext.fillStyle = "#FF0000";
-		canvasRenderingContext.beginPath();
-		canvasRenderingContext.arc(this.x, this.y, 10, 0, 6.28);
-		canvasRenderingContext.fill();
+		// Player logo.
+		let image = new Image();
+		image.src = "images/player/Linux_Logo.png";
+		let size = 50;
+		canvasRenderingContext.drawImage(image, this.x - (size / 2), this.y - (size / 2), size, size);
 
+		// Orientation line.
 		canvasRenderingContext.strokeStyle = "#FF0000";
 		canvasRenderingContext.beginPath();
 		canvasRenderingContext.moveTo(this.x, this.y);

@@ -4,6 +4,13 @@ let targets = new Targets();
 // 'Targets' class.
 function Targets()
 {
+	// Image sources.
+	let imageSources =
+	[
+		"images/targets/Mac_OS_Logo.png",
+		"images/targets/Windows_10_Logo.png"
+	];
+
 	// Default values.
 	this.objects = [];
 	this.maxID = 0;
@@ -125,23 +132,24 @@ function Targets()
 			}
 		}
 
-		// Is the amount of targets under five.
-		if (this.getAmount() < 5) // Yes.
+		// Is the amount of targets under ten.
+		if (this.getAmount() < 10) // Yes.
 		{
 			// Spawn new target.
 			this.push
 			({
-				x:Math.random()* width,
-				y:Math.random()* height,
+				x:Math.random() * width,
+				y:Math.random() * height,
 				v:5,
-				angle:Math.random()* 2 * Math.PI,
-				size:25,
+				angle:Math.random() * 2 * Math.PI,
+				size:50,
 				color:
 				{
 					r:Math.random(),
 					g:Math.random(),
 					b:Math.random()
-				}
+				},
+				src:imageSources[Math.floor(Math.random() * (imageSources.length + 1))]
 			});
 		}
 	};
@@ -167,7 +175,7 @@ function Targets()
 			// Animation.
 			if (object.hitAnimClock !== -1)
 			{
-				object.alpha = 1 - object.hitAnimClock*1.5;
+				object.alpha = 1 - object.hitAnimClock * 1.5;
 
 				if (object.alpha < 0)
 				{
@@ -178,18 +186,11 @@ function Targets()
 				object.nextAlpha = object.alpha;
 			}
 
-			// Draw target.
-			canvasRenderingContext.fillStyle = utilities.getARGBString
-			(
-				object.alpha,
-				object.color.r,
-				object.color.g,
-				object.color.b
-			);
+			// Target images.
+			let image = new Image();
+			image.src = object.src;
 			canvasRenderingContext.globalAlpha = object.alpha;
-			canvasRenderingContext.beginPath();
-			canvasRenderingContext.arc(object.x, object.y, object.size * object.scale, 0, 6.28);
-			canvasRenderingContext.fill();
+			canvasRenderingContext.drawImage(image, object.x, object.y, object.size, object.size);
 			canvasRenderingContext.globalAlpha = 1;
 		}
 	};
