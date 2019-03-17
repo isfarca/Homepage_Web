@@ -143,12 +143,6 @@ function Targets()
 				v:5,
 				angle:Math.random() * 2 * Math.PI,
 				size:50,
-				color:
-				{
-					r:Math.random(),
-					g:Math.random(),
-					b:Math.random()
-				},
 				src:imageSources[Math.floor(Math.random() * (imageSources.length + 1))]
 			});
 		}
@@ -182,7 +176,7 @@ function Targets()
 					object.alpha = 0;
 				}
 
-				object.scale = 1 + 2 * object.hitAnimClock;
+				object.size = 50 + 20 * object.hitAnimClock;
 				object.nextAlpha = object.alpha;
 			}
 
