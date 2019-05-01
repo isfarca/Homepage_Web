@@ -40,10 +40,13 @@ Player.prototype.moveX = function(step, level, keys)
 // Default gravity value.
 let gravity = 30;
 
+// Player can be pressed jump button.
+let mayBePressed = true;
+
 // Default jump values.
 let isJumping = false;
-let jumpSpeed = 0;
-let maxJumpSpeed = 16;
+let currentJumpSpeed = 0;
+let maxJumpSpeed = 20;
 
 // Player movement on y axis.
 Player.prototype.moveY = function(step, level, keys)
@@ -62,23 +65,46 @@ Player.prototype.moveY = function(step, level, keys)
         // Call collision function.
         level.playerTouched(obstacle);
 
-        // Up key pressed and have a up speed?
-        if (keys["up"] && !isJumping) // Yes.
+        // Up key not pressed?
+        if (!keys["up"])
         {
-            jumpSpeed += 2;
+            mayBePressed = true;
+        }
 
-            // ToDo: Player color by jump speed.
+        // Up key pressed and not jumping?
+        if (keys["up"] && !isJumping && mayBePressed) // Yes.
+        {
+            // Increase the jump speed.
+            currentJumpSpeed += 2;
 
-            if (jumpSpeed >= maxJumpSpeed)
+            // Decrease the height of player.
+            this.size = new Vector(this.size.x, this.size.y - 0.05);
+
+            // Max jump speed exceeded?
+            if (currentJumpSpeed >= maxJumpSpeed) // Yes.
             {
+                // Not may be pressed.
+                mayBePressed = false;
+
+                // Player is forced to jump.
                 isJumping = true;
             }
         }
-        else if (isJumping || !keys["up"] && jumpSpeed > 0)
+        // Are you jumping?
+        else if (isJumping || !keys["up"] && currentJumpSpeed > 0) // Yes.
         {
-            this.speed.y = -jumpSpeed;
-            jumpSpeed = 0;
+            // To jump.
+            this.speed.y = -currentJumpSpeed;
+
+            // Set default values for defined variables.
+            currentJumpSpeed = 0;
             isJumping = false;
+
+            // Set position higher for collision with ground.
+            this.position = new Vector(this.position.x, this.position.y - 1);
+
+            // Set default size of player.
+            this.size = new Vector(this.size.x, 1);
         }
         else // Otherwise.
         {
