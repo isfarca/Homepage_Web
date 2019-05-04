@@ -4,6 +4,7 @@ timerID = null;
 
 // Default values.
 let playing = false;
+let totalHits = 0;
 let numberHoles = 6 * 10;
 let currentPosition = -1;
 
@@ -32,7 +33,7 @@ function stopTimer()
 function showTimer(rememberTime)
 {
     // Write timer to field.
-    document.controlPanel.timeleft.value = rememberTime;
+    document.controlPanel.timeLeft.value = rememberTime;
 
     // Are you playing?
     if (playing) // Yes.
@@ -63,12 +64,9 @@ function stopGame()
     // Stop timer.
     stopTimer();
 
-    // Get all total hits.
-    let totalHits = document.controlPanel.timeleft.value;
-
     // Change default values for player.
     playing = false;
-    document.controlPanel.timeleft.value = 0;
+    document.controlPanel.timeLeft.value = 0;
 
     // Clear holes and output game over in the field.
     clearHoles();
@@ -98,6 +96,7 @@ function play()
 
     // Write default values for starting game.
     clearHoles();
+    totalHits = 0;
     document.controlPanel.score.value = 0;
     display("Playing");
 
@@ -157,7 +156,8 @@ function hitHead(id)
     if (currentPosition !== id) // Yes.
     {
         // Decrement score.
-        document.controlPanel.score.value += -1;
+        totalHits--;
+        document.controlPanel.score.value = totalHits;
 
         // Unchecked clicked radio button.
         document.playPanel.elements[id].checked = false;
@@ -165,7 +165,8 @@ function hitHead(id)
     else // No.
     {
         // Increment score.
-        document.controlPanel.score.value += 1;
+        totalHits++;
+        document.controlPanel.score.value = totalHits;
 
         // Refresh the radio button.
         launch();
