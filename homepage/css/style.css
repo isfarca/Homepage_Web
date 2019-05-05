@@ -277,7 +277,38 @@ form textarea {
     padding-left: 10px;
 }
 
-/* CONTACT IMPRINT PLACEHOLDER WITH BROWSER SUPPORT */
+/* DATA PROTECTION */
+
+form input, textarea {
+    background-color: #171717;
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: 1px solid #333333;
+}
+
+form input:first-child {
+    margin-top: 10px;
+}
+
+form input {
+    width: 552px;
+    height: 30px;
+}
+
+form textarea {
+    width: 550px;
+    height: 200px;
+    resize: none;
+}
+
+.input_text {
+    color: #f1f1f1;
+    padding-left: 10px;
+}
+
+/* CONTACT IMPRINT DATA PROTECTION PLACEHOLDER WITH BROWSER SUPPORT */
 
 ::-webkit-input-placeholder {
     color: #999999;
