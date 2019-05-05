@@ -102,30 +102,30 @@ header nav ul li:hover {
     padding-top: 5px;
 }
 
-/* HOME */
+/* START */
 
-#home {
+#start {
     background: url(https://via.placeholder.com/1920x1080) fixed center center;
     background-size: cover;
 }
 
-#home h1 {
+#start h1 {
     margin: 240px auto 0 auto;
     font-size: 110px;
 }
 
-#home h2 {
+#start h2 {
     margin: 0 auto 0 auto;
     font-size: 25px;
 }
 
-#home img {
+#start img {
     width: 32px;
     margin-top: 150px;
     opacity: 0.7;
 }
 
-#home img:hover {
+#start img:hover {
     opacity: 1;
 }
 
@@ -151,7 +151,7 @@ header nav ul li:hover {
     margin: 0 auto 0 auto;
 }
 
-/* WORK */
+/* MEET */
 
 #projects {
     width: 900px;
@@ -181,6 +181,39 @@ header nav ul li:hover {
     -o-transform: scale(1.1);
     box-shadow: -1px 6px 13px 0 rgba(0, 0, 0, 0.44);
 }
+
+/* DISCOVER */
+
+#externals {
+    width: 900px;
+    margin: 0 auto 0 auto;
+}
+
+#externals ul {
+    padding: 0;
+}
+
+#externals ul li {
+    width: 33.3%;
+    float: left;
+    margin-bottom: 15px;
+}
+
+#externals img {
+    width: 280px;
+    height: 170px;
+    border-radius: 5px;
+}
+
+#externals img:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    box-shadow: -1px 6px 13px 0 rgba(0, 0, 0, 0.44);
+}
+
+/* ZERG RUSH */
 
 /* CONTACT */
 
@@ -213,7 +246,38 @@ form textarea {
     padding-left: 10px;
 }
 
-/* CONTACT PLACEHOLDER WITH BROWSER SUPPORT */
+/* IMPRINT */
+
+form input, textarea {
+    background-color: #171717;
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    border: 1px solid #333333;
+}
+
+form input:first-child {
+    margin-top: 10px;
+}
+
+form input {
+    width: 552px;
+    height: 30px;
+}
+
+form textarea {
+    width: 550px;
+    height: 200px;
+    resize: none;
+}
+
+.input_text {
+    color: #f1f1f1;
+    padding-left: 10px;
+}
+
+/* CONTACT IMPRINT PLACEHOLDER WITH BROWSER SUPPORT */
 
 ::-webkit-input-placeholder {
     color: #999999;
@@ -263,7 +327,7 @@ footer p {
 
 /* TABLETS */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1040px) {
     header {
         height: auto;
     }
@@ -271,66 +335,6 @@ footer p {
     #logo {
         width: 100px;
         margin-top: 5px;
-    }
-
-    header nav {
-        margin-top: 0;
-    }
-
-    header nav ul li {
-        font-size: 12px;
-    }
-
-    #home h1 {
-        font-size: 90px;
-        margin-top: 200px;
-    }
-
-    #home h2 {
-        font-size: 22px;
-    }
-
-    h3 {
-        padding-top: 12%;
-    }
-
-    #about p {
-        width: 80%;
-    }
-
-    #projects {
-        width: auto;
-    }
-
-    #projects ul li {
-        width: 100%;
-        float: none;
-    }
-
-    #projects ul li:last-child {
-        padding-bottom: 20%;
-    }
-
-    #projects img {
-        width: 55%;
-        height: auto;
-    }
-
-    form input, form textarea {
-        width: 60%;
-    }
-
-    .button {
-        width: 62%;
-    }
-}
-
-/* MOBILES */
-
-@media screen and (max-width: 517px) {
-    #logo {
-        width: 90px;
-        margin-left: 30px;
     }
 
     header nav {
@@ -373,17 +377,92 @@ footer p {
         border-top: 1px solid #171717;
     }
 
-    #home h1 {
+    #start h1 {
+        font-size: 90px;
+        margin-top: 200px;
+    }
+
+    #start h2 {
+        font-size: 22px;
+    }
+
+    h3 {
+        padding-top: 12%;
+    }
+
+    #about p {
+        width: 80%;
+    }
+
+    #projects {
+        width: auto;
+    }
+
+    #projects ul li {
+        width: 100%;
+        float: none;
+    }
+
+    #projects ul li:last-child {
+        padding-bottom: 20%;
+    }
+
+    #projects img {
+        width: 55%;
+        height: auto;
+    }
+
+    #externals {
+        width: auto;
+    }
+
+    #externals ul li {
+        width: 100%;
+        float: none;
+    }
+
+    #externals ul li:last-child {
+        padding-bottom: 20%;
+    }
+
+    #externals img {
+        width: 55%;
+        height: auto;
+    }
+
+    form input, form textarea {
+        width: 60%;
+    }
+
+    .button {
+        width: 62%;
+    }
+}
+
+/* MOBILES */
+
+@media screen and (max-width: 517px) {
+    #logo {
+        width: 90px;
+        margin-left: 30px;
+    }
+
+    #start h1 {
         font-size: 60px;
         margin-top: 200px;
     }
 
-    #home h2 {
+    #start h2 {
         width: 70%;
         height: auto;
     }
 
     #projects img {
+        width: 70%;
+        height: auto;
+    }
+
+    #externals img {
         width: 70%;
         height: auto;
     }
