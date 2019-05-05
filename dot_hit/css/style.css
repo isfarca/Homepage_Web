@@ -7,3 +7,16 @@ hr {
 div {
     text-align: center;
 }
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image {
+    opacity: 0.1;
+}
+
+.image:hover {
+    cursor: default;
+}

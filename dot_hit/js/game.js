@@ -9,12 +9,27 @@ let numberHoles = 6 * 10;
 let currentPosition = -1;
 
 // Clear holes.
-function clearHoles()
+function changeButtons(isDisabled)
 {
-    // Set unchecked value to all radio buttons.
-    for (let i = 0; i < document.playPanel.elements.length; i++)
+    // Get images.
+    let buttons = document.getElementsByClassName("image");
+
+    // Change values for image buttons.
+    for (let i = 0; i < buttons.length; i++)
     {
-        document.playPanel.elements[i].checked = false;
+        // Prevent refresh page.
+        buttons[i].addEventListener
+        (
+            "click",
+            function(event)
+            {
+                event.preventDefault()
+            }
+        );
+
+        // Default values.
+        buttons[i].disabled = isDisabled;
+        buttons[i].style.opacity = "0.1";
     }
 }
 
@@ -68,12 +83,12 @@ function stopGame()
     playing = false;
     document.controlPanel.timeLeft.value = 0;
 
-    // Clear holes and output game over in the field.
-    clearHoles();
-    display("Game Over");
+    // Clear buttons and output game over in the field.
+    changeButtons(true);
+    display("Zeit ist abgelaufen!");
 
     // Show message with total hits information.
-    alert("Game Over.\nYour score is: " + totalHits);
+    alert("Zeit ist abgelaufen!\nDeine Punktzahl beträgt: " + totalHits + ".\n\n" + randomFact());
 }
 
 // Start game.
@@ -95,10 +110,10 @@ function play()
     playing = true;
 
     // Write default values for starting game.
-    clearHoles();
+    changeButtons(false);
     totalHits = 0;
     document.controlPanel.score.value = 0;
-    display("Playing");
+    display("Zeit läuft!");
 
     // Start the game and timer.
     launch();
@@ -121,13 +136,13 @@ function launch()
     while (!launched)
     {
         // Get random radio button
-        let randomPositionNumber = random();
+        let randomPositionNumber = randomId();
 
         // Radio button id equal not the current radio button id.
         if (randomPositionNumber !== currentPosition) // Yes.
         {
-            // Checked status.
-            document.playPanel.elements[randomPositionNumber].checked = true;
+            // Visible status.
+            document.getElementsByClassName("image")[randomPositionNumber].style.opacity = "1.0";
 
             // Write new current radio button id.
             currentPosition = randomPositionNumber;
@@ -144,9 +159,9 @@ function hitHead(id)
     // Are you not playing?
     if (!playing) // Yes.
     {
-        // Clear holes and Output the task.
-        clearHoles();
-        display("Push Start to Play");
+        // Clear buttons and Output the task.
+        changeButtons(true);
+        display("Drücke Start um zu spielen!");
 
         // Exit this function.
         return;
@@ -159,8 +174,8 @@ function hitHead(id)
         totalHits--;
         document.controlPanel.score.value = totalHits;
 
-        // Unchecked clicked radio button.
-        document.playPanel.elements[id].checked = false;
+        // Invisible clicked radio button.
+        document.getElementsByClassName("image")[id].style.opacity = "0.1";
     }
     else // No.
     {
@@ -171,13 +186,19 @@ function hitHead(id)
         // Refresh the radio button.
         launch();
 
-        // Unchecked clicked radio button.
-        document.playPanel.elements[id].checked = false;
+        // Invisible clicked radio button.
+        document.getElementsByClassName("image")[id].style.opacity = "0.1";
     }
 }
 
 // Get random radio button id.
-function random()
+function randomId()
 {
     return (Math.floor(Math.random() * 100 % numberHoles));
+}
+
+// Get a random fact about me.
+function randomFact()
+{
+    return facts[Math.floor(Math.random() * facts.length)];
 }
