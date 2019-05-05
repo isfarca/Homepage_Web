@@ -1,6 +1,7 @@
 /* GROUND PLAN */
 
 html, body {
+    background: #333333;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -22,12 +23,8 @@ li {
 h1, h2, h3, a {
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
-    color: #494949;
+    color: #979797;
     text-transform: uppercase;
-}
-
-h2 {
-    color: #5d7177;
 }
 
 h3 {
@@ -38,13 +35,13 @@ h3 {
 
 h4, p {
     font-family: 'Roboto Slab', serif;
-    color: #494949;
+    color: #979797;
 }
 
 hr {
     width: 30px;
     height: 3px;
-    background: #494949;
+    background: #979797;
     border: 0;
     margin: 0 auto 40px auto;
 }
@@ -70,8 +67,8 @@ header {
     position: fixed;
     top: 0;
     left: 0;
-    background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background-color: #171717;
+    box-shadow: -1px 6px 13px 0 rgba(0, 0, 0, 0.44);
     z-index: 1;
 }
 
@@ -85,16 +82,13 @@ header {
     width: 100%;
 }
 
-#logo:hover {
-    opacity: 0.5;
-}
-
 header nav {
     float: right;
     margin: 10px 50px 0 0;
 }
 
 header nav ul a li {
+    color: #f1f1f1;
     float: left;
     margin-left: 25px;
 }
@@ -104,13 +98,14 @@ header nav ul a {
 }
 
 header nav ul li:hover {
+    color: #13aff0;
     padding-top: 5px;
 }
 
 /* HOME */
 
 #home {
-    background: url(../images/landing.jpg) fixed center center;
+    background: url(https://via.placeholder.com/1920x1080) fixed center center;
     background-size: cover;
 }
 
@@ -158,10 +153,6 @@ header nav ul li:hover {
 
 /* WORK */
 
-#work {
-    background-color: #f0f0f0;
-}
-
 #projects {
     width: 900px;
     margin: 0 auto 0 auto;
@@ -188,17 +179,18 @@ header nav ul li:hover {
     -webkit-transform: scale(1.1);
     -moz-transform: scale(1.1);
     -o-transform: scale(1.1);
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: -1px 6px 13px 0 rgba(0, 0, 0, 0.44);
 }
 
 /* CONTACT */
 
 form input, textarea {
+    background-color: #171717;
     font-family: 'Roboto Slab', serif;
     font-size: 15px;
     margin-bottom: 10px;
     border-radius: 2px;
-    border: 2px solid #494949;
+    border: 1px solid #333333;
 }
 
 form input:first-child {
@@ -217,7 +209,7 @@ form textarea {
 }
 
 .input_text {
-    color: #494949;
+    color: #f1f1f1;
     padding-left: 10px;
 }
 
@@ -242,15 +234,15 @@ form textarea {
 /* CONTACT SEND BUTTON */
 
 .button {
-    background-color: #f0f0f0;
-    color: #494949;
+    color: #ffffff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
     width: 566px;
     height: 50px;
 }
 
 .button:hover {
-    background-color: #494949;
-    color: #f0f0f0;
+    background-color: #509b50;
 }
 
 /* FOOTER */
@@ -258,12 +250,12 @@ form textarea {
 footer {
     width: 100%;
     height: 70px;
-    background-color: #3f3f3f;
+    background-color: #171717;
 }
 
 footer p {
     font-size: 12px;
-    color: #f0f0f0;
+    color: #f1f1f1;
     padding-top: 30px;
 }
 
@@ -347,6 +339,7 @@ footer p {
     }
 
     .fa-bars {
+        color: #f1f1f1;
         font-size: 17px;
         display: inline-block;
         width: 100%;
@@ -377,11 +370,7 @@ footer p {
         padding: 5px 0;
         margin: 0;
         font-size: 11px;
-        border-top: 1px solid #dddddd;
-    }
-
-    header nav ul li:hover {
-        background-color: #eeeeee;
+        border-top: 1px solid #171717;
     }
 
     #home h1 {
