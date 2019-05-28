@@ -60,7 +60,7 @@ function FlipTile(tile, value)
     if (memoryValues.length < 2 && tile.innerHTML === "")
     {
         // Open memory card.
-        tile.style.background = "#FFF";
+        tile.style.background = "#FFFFFF";
         tile.innerHTML = '<p>' + value + '</p>';
 
         if (memoryValues.length === 0) // Open first memory card.
@@ -90,7 +90,7 @@ function FlipTile(tile, value)
                     // Check to see if the whole board is cleared.
                     if (flippedTiles === memoryArray.length)
                     {
-                        alert("Board cleared... generating new board");
+                        alert("Memory erfolgreich gelöst. Neues Feld wird erstellt!");
                         document.getElementById("memoryBoard").innerHTML = "";
                         NewBoard();
                     }

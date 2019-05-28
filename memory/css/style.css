@@ -28,3 +28,22 @@ div div p {
     font-size: 20px;
     text-align: center;
 }
+
+/* MEDIA QUERIES */
+
+/* TABLETS */
+
+@media screen and (max-width: 1040px) {
+
+    /* REMAINS THE SAME */
+}
+
+/* MOBILES */
+
+@media screen and (max-width: 820px) {
+
+    div {
+        width: 380px;
+        height: 1020px;
+    }
+}
