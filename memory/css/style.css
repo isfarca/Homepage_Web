@@ -1,7 +1,13 @@
+/* GROUND PLAN */
+
+body {
+    background: #333333;
+}
+
 /* MEMORY GAME BOARD */
 
 div {
-    background: #CCCCCC;
+    background: #656565;
     border: #999999 1px solid;
     width: 855px;
     height: 530px;
