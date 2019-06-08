@@ -60,7 +60,7 @@ function FlipTile(tile, value)
     if (memoryValues.length < 2 && tile.innerHTML === "")
     {
         // Open memory card.
-        tile.style.background = "#FFFFFF";
+        tile.style.background = "#171717";
         tile.innerHTML = '<p>' + value + '</p>';
 
         if (memoryValues.length === 0) // Open first memory card.
