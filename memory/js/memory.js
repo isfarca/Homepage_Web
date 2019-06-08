@@ -21,7 +21,7 @@ let memoryTileIds = [];
 let flippedTiles = 0;
 
 // Background image by closing.
-let tileBackgroundImage = "url(images/background.png) no-repeat";
+let tileBackgroundImage = "url(images/card_back_flipped.png) no-repeat";
 
 // Randomize memory cards.
 Array.prototype.ShuffleTile = function()
