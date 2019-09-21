@@ -1,0 +1,57 @@
+/* GROUND PLAN */
+
+body {
+    background: #333333;
+}
+
+/* MEMORY GAME BOARD */
+
+div {
+    background: #656565;
+    border: #999999 1px solid;
+    width: 855px;
+    height: 530px;
+    padding: 24px;
+    margin: 0 auto;
+}
+
+/* MEMORY CARDS BACK */
+
+div div {
+    background: url(../images/card_back_default.png) no-repeat;
+    border: #000000 1px solid;
+    width: 80px;
+    height: 70px;
+    float: left;
+    margin: 10px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+/* MEMORY CARDS FOREGROUND (VALUES) */
+
+div div p {
+    font-family: 'Roboto Slab', serif;
+    font-size: 20px;
+    text-align: center;
+    color: #979797;
+}
+
+/* MEDIA QUERIES */
+
+/* TABLETS */
+
+@media screen and (max-width: 1040px) {
+
+    /* REMAINS THE SAME */
+}
+
+/* MOBILES */
+
+@media screen and (max-width: 920px) {
+
+    div {
+        width: 428px;
+        height: 1060px;
+    }
+}
