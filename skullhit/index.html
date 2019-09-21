@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+<head>
+
+    <!-- METAS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- STYLES -->
+
+    <!-- MY STYLE -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- SCRIPTS -->
+
+    <!-- LIST OF FACTS ABOUT ME -->
+    <script src="js/facts.js"></script>
+
+    <!-- GAME LOGIC -->
+    <script src="js/game.js"></script>
+
+    <!-- TITLE -->
+    <title>Skull hit</title>
+
+</head>
+
+<body>
+
+    <!-- DESCRIPTION -->
+    <div>
+
+        <!-- HEADING -->
+        <h2>
+            Skull hit
+        </h2>
+
+        <!-- TEXT -->
+        Wie viele Bilder kannst du in 30 Sekunden anklicken?
+
+    </div>
+
+    <!-- CONTROL PANEL -->
+    <form name="controlPanel">
+
+        <!-- CONTAINER -->
+        <div>
+
+            <!-- TABLE -->
+            <table>
+
+                <!-- FIRST ROW -->
+                <tr>
+
+                    <!-- START STOP BUTTON -->
+                    <td>
+
+                        <input type="button" name="startStop" value=" Start Game | Stop Game " onClick="play()">
+
+                    </td>
+
+                    <!-- EMPTY AREA -->
+                    <td>
+
+                        <pre>
+                        </pre>
+
+                    </td>
+
+                    <!-- TIME TEXT -->
+                    <td>
+
+                        Zeit:
+
+                    </td>
+
+                    <!-- TIME OUTPUT FIELD -->
+                    <td>
+
+                        <label>
+                            <input type="text" name="timeLeft" size="4" onFocus="this.blur()">
+                        </label>
+
+                    </td>
+
+                </tr>
+
+                <!-- SECOND ROW -->
+                <tr>
+
+                    <!-- PLAYER TASK OUTPUT FIELD -->
+                    <td>
+
+                        <label>
+                            <input type="text" name="state" size="20" value="Drücke Start um zu spielen!" onFocus="this.blur()">
+                        </label>
+
+                    </td>
+
+                    <!-- EMPTY AREA -->
+                    <td>
+
+                        <pre>
+                        </pre>
+
+                    </td>
+
+                    <!-- SCORE TEXT -->
+                    <td>
+
+                        Punkte:
+
+                    </td>
+
+                    <!-- SCORE OUTPUT FIELD -->
+                    <td>
+
+                        <label>
+                            <input type="text" name="score" size="4" onFocus="this.blur()">
+                        </label>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </form>
+
+    <!-- PLAY PANEL -->
+    <form name="playPanel">
+
+        <div>
+
+            <!-- TABLE -->
+            <table>
+
+                <!-- PARTING LINE -->
+                <tr>
+
+                    <td colspan=10>
+
+                        <hr>
+
+                    </td>
+
+                </tr>
+
+                <!-- FIRST ROW -->
+                <tr>
+
+                    <!-- IMAGE BUTTONS -->
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(0)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(1)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(2)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(3)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(4)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(5)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(6)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(7)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(8)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(9)" disabled></td>
+
+                </tr>
+
+                <!-- SECOND ROW -->
+                <tr>
+
+                    <!-- IMAGE BUTTONS -->
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(10)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(11)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(12)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(13)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(14)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(15)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(16)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(17)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(18)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(19)" disabled></td>
+
+                </tr>
+
+                <!-- THIRD ROW -->
+                <tr>
+
+                    <!-- IMAGE BUTTONS -->
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(20)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(21)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(22)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(23)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(24)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(25)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(26)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(27)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(28)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(29)" disabled></td>
+
+                </tr>
+
+                <!-- FOURTH ROW -->
+                <tr>
+
+                    <!-- IMAGE BUTTONS -->
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(30)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(31)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(32)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(33)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(34)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(35)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(36)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(37)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(38)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(39)" disabled></td>
+
+                </tr>
+
+                <!-- FIFTH ROW -->
+                <tr>
+
+                    <!-- IMAGE BUTTONS -->
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(40)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(41)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(42)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(43)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(44)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(45)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(46)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(47)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(48)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(49)" disabled></td>
+
+                </tr>
+
+                <!-- SIXTH ROW -->
+                <tr>
+
+                    <!-- IMAGE BUTTONS -->
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(50)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(51)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(52)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(53)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(54)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(55)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(56)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(57)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(58)" disabled></td>
+                    <td><input class="image" type="image" src="images/linux_logo.png" alt="image" onclick="hitHead(59)" disabled></td>
+
+                </tr>
+
+                <!-- PARTING END LINE -->
+                <tr>
+
+                    <td colspan=10>
+
+                        <hr>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </form>
+
+</body>
+
+</html>

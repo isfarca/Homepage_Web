@@ -1,0 +1,24 @@
+// Instantiate.
+let utilities = new Utilities();
+
+// 'Utilities' class.
+function Utilities()
+{
+	// Get the time.
+	this.getTime = function()
+	{
+		return (new Date()).getTime();
+	};
+
+	// Get the color.
+	this.getARGBString = function(a, r, g, b)
+	{
+		return "rgba" +
+		"(" +
+			Math.floor(255*r) + "," +
+			Math.floor(255*g) + "," +
+			Math.floor(255*b) + "," +
+			Math.floor(255*a) +
+		")";
+	};
+}
